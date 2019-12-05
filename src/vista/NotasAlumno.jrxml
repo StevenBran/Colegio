@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91ceb244-0986-438b-b594-78f18b66b877">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="18"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="apellido" class="java.lang.String"/>
+	<parameter name="año" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT alumno.NombreAlumno,
+        alumno.ApellidoAlumno,
+        grado.grado,
+        materia.Materia,
+        notas.nota_primer_bimestre,
+        notas.nota_segundo_bimestre,
+        notas.nota_tercer_bimestre,
+        notas.nota_cuarto_bimestre,
+        notas.Promedio,
+        notas.Año
+FROM notas
+INNER JOIN alumno
+ON notas.Id_Alumno=alumno.Id_Alumno
+INNER JOIN grado
+ON notas.Id_Grado=grado.Grado
+INNER JOIN materia
+on notas.Id_Materia=materia.Id_Materia
+WHERE alumno.NombreAlumno=  $P{nombre} 
+AND alumno.ApellidoAlumno=  $P{apellido} 
+ AND notas.Año=  $P{año} ]]>
+	</queryString>
+	<field name="NombreAlumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ApellidoAlumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Materia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_primer_bimestre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_segundo_bimestre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_tercer_bimestre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_cuarto_bimestre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Promedio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Año" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="149" y="0" width="207" height="33" uuid="b0c4f2c1-d9c1-4128-bab0-64e98ae11fb1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Calificaciones /Ciclo Escolar]]></text>
+			</staticText>
+			<image>
+				<reportElement x="443" y="2" width="112" height="77" uuid="c831fb82-cdb6-4413-82aa-9dded8e281cc"/>
+				<imageExpression><![CDATA["C:\\Users\\asd\\Desktop\\colegio\\interamericano\\src\\imagenes\\interamericanoooooo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="33" width="100" height="20" uuid="7bae6c42-a30a-4eb5-b7db-f881fa0907c4"/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="100" height="20" uuid="89feee7f-65f6-46b7-9898-97e596d70d9d"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="33" width="131" height="20" uuid="77a28b49-8236-43a5-9b7e-93aeecd58bc4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NombreAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="33" width="125" height="20" uuid="5e6f4fb9-9de5-4d01-93d5-30b691a4e2e3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ApellidoAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="87" height="20" uuid="b4abf7be-7dac-41a5-ba87-9a89a70988ea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Año}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="59" width="131" height="20" uuid="4ca5aafc-ed18-4cf4-a0f0-6d839e432437"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="149" height="20" uuid="18baebe4-936a-4ea0-b2a4-d3612adebb73"/>
+				<text><![CDATA[Materia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="0" width="82" height="20" uuid="85b79358-c92e-47eb-a688-092e88941b20"/>
+				<text><![CDATA[1ER BIMESTRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="81" height="20" uuid="51a735f3-96f2-4e0c-9070-0e87d19a67b8"/>
+				<text><![CDATA[2DO BIMESTRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="0" width="80" height="20" uuid="0a3e51ec-477f-435b-85b8-cb37d5e211d7"/>
+				<text><![CDATA[3ER BIMESTRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="0" width="82" height="20" uuid="821d7f41-da37-4acd-b651-a7f4d370dd9c"/>
+				<text><![CDATA[4TO BIMESTRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="503" y="0" width="52" height="20" uuid="827c7b9d-6918-4a04-86dd-2a815996c41a"/>
+				<text><![CDATA[Promedio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="149" height="20" uuid="94fe7df0-4874-4db0-8ba5-eb0c5ebbe801"/>
+				<textFieldExpression><![CDATA[$F{Materia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="82" height="20" uuid="2125cf16-5b4b-4393-a46d-59370b6c6b38"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota_primer_bimestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="0" width="81" height="20" uuid="27727768-131f-4a3a-9e6f-152b3714903f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota_segundo_bimestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="0" width="80" height="20" uuid="523fef98-74b5-40fd-9779-5357e4674934"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota_tercer_bimestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="0" width="82" height="20" uuid="b28762a6-fbc2-484a-9975-842c6658bab7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota_cuarto_bimestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="0" width="52" height="20" uuid="f7b627a1-af88-42d1-bf11-443cb026521a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Promedio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="114" splitType="Stretch">
+			<line>
+				<reportElement x="125" y="113" width="430" height="1" uuid="878a42db-06c4-4a5d-91dd-1f3d33e3ad6a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="93" width="100" height="20" uuid="07e2e038-5519-4286-b06c-f6722df1712c"/>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="39" width="172" height="20" uuid="bc5be6fa-6dec-4fa1-9924-38e37dd061c3"/>
+				<text><![CDATA[Licda. Carmen Lizeth de Granados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="59" width="100" height="20" uuid="6b11f2dc-3914-4422-8fc4-076d70481627"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Directora]]></text>
+			</staticText>
+			<line>
+				<reportElement x="192" y="38" width="175" height="1" uuid="4dc33333-4a0c-47c6-92be-39e59fac089f"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
